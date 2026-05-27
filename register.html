@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register page</title>
+    <link rel="stylesheet" href="CSS/styles.css">
 </head>
 <body>
      <nav>
@@ -12,7 +13,7 @@
         <a href="register.html">Register</a>
     </nav>
     <h1>Register to Student Management System</h1>
-    <form>
+    <form action="login.html">
         <label for="username">Username</label>
         <input type="text" id="username" placeholder="Enter Username" name="username" required><br><br>
         <label for="email">Email</label>
@@ -20,8 +21,9 @@
         <label for="password">Password</label>
         <input type="password" id="password" placeholder="Enter Password" name="password" required><br><br>
         <button type="submit">Register</button>
+        <h4>Already have an account? </h4>
+        <a href="login.html">Login here</a>
     </form>
-    <h4>Already have an account? </h4>
-    <a href="login.html">Login here</a>
+    
 </body>
 </html>

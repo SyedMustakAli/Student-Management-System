@@ -1,0 +1,110 @@
+
+nav {
+    background-color: black;
+    text-align: center;
+    font-size: 20px;
+}
+
+nav a{
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+nav a:hover{
+    color: yellow;
+}
+
+body{
+   margin: 0 ;
+   background-color:bisque;
+   text-align: center;
+
+}
+
+form{
+    background-color: white;
+    width: 300px;
+    margin: 50px auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+label{
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    border: 2px solid black;
+}
+
+button{
+    background-color:black;
+    color:white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+table,tr,th,td{
+    border:1px solid black;
+    padding:8px;
+
+}
+table{
+    border-collapse:collapse;
+    margin :20px auto;
+}
+
+th{
+    background-color:black;
+    color:white
+}
+
+tr:nth-child(even){
+    background-color:lightyellow;
+}
+tr:nth-child(odd){
+    background-color:white;
+}
+
+tr td a{
+    text-decoration:none;
+    padding:5px 10px;
+    color:black;
+}
+tr td a:hover{
+    background-color:black;
+    color:white;
+    border-radius:5px;
+    color:yellow;
+}
+body>a,form>a{
+    text-decoration:none;
+    color:black;
+    font-size:18px;
+    padding:5px;
+
+}
+body>a:hover,form>a:hover{
+    color:yellow;
+    background-color:black;
+    border-radius:5px;
+}
+
+input:focus{
+    border-color:turquoise;
+    outline:none;
+}
+
