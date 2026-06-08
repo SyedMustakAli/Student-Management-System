@@ -14,17 +14,26 @@
         <a href="logout.html">Logout</a>  
     </nav>
     <h1>Edit Student</h1>
-    <form action="editStudent.html" method="post">
+    
+    <form onsubmit="updateStudent(event)">
         <label for="name">Name:</label> 
         <input type="text" id="name" name="name" required><br><br>
+        
         <label for="rollnumber">Roll Number:</label>
-        <input type="text" id="rollnumber" name="rollnumber" required><br><br>
+        <input type="text" id="rollnumber" name="rollnumber" readonly><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
         <label for="branch">Branch:</label>
         <input type="text" id="branch" name="branch" required><br><br>
+        
         <label for="cgpa">CGPA:</label>
         <input type="text" id="cgpa" name="cgpa" required><br><br>
+        
         <button type="submit">Update Student</button>
     </form>
     
+    <script src="script.js"></script>
 </body>
 </html>

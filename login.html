@@ -13,7 +13,7 @@
         <a href="register.html">Register</a>
     </nav>
     <h1>Login to Student Management System</h1>
-    <form action="dashboard.html">
+    <form onsubmit="login(event)">
         <label for="username">Username</label>
         <input type="text" id="username" placeholder="Enter Username"name="username" required><br><br>
         <label for="password">Password</label>
@@ -22,5 +22,7 @@
         <h4>Don't have an account? </h4>
         <a href="register.html">Register here</a>
     </form>
+
+    <script src="script.js"></script>
 </body>
 </html>
