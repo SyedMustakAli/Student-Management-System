@@ -1,6 +1,4 @@
-// ==========================================
-// 1. AUTHENTICATION (LOGIN & REGISTRATION)
-// ==========================================
+
 
 function register(event) {
     event.preventDefault();
@@ -8,6 +6,27 @@ function register(event) {
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmpassword").value;
+    const uname=/[a-zA-Z0-9]{6}/
+    if(!uname.test(username))
+    {
+        alert("invalid usernmae, it should have only alphabets and numbers with min 6 characters");
+        return;
+    }
+
+
+    let emailreg=/^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/
+     if(!emailreg.test(email))
+    {
+        alert("invalid email the email pattern is /^[a-zA-Z0-9]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/");
+        return;
+    }
+
+    let passreg=/^[a-zA-Z0-9@]{6,}$/
+    if(!passreg.test(password))
+    {
+        alert("invlid password, the password should be min 6 character it can have alphabets ,numbers,@ symbol ");
+        return;
+    }
 
     if (confirmPassword !== password) {
         alert("confirm password incorrect");
@@ -30,17 +49,29 @@ function login(event) {
     const password = document.getElementById("password").value;
 
     const userdetails = JSON.parse(localStorage.getItem(username));
-
+     const uname=/[a-zA-Z0-9]{6}/
+    if(!uname.test(username))
+    {
+        alert("invalid usernmae, it should have only alphabets and numbers with min 6 characters");
+        return;
+    }
+    let passreg=/^[a-zA-Z0-9@]{6,}$/
+    if(!passreg.test(password))
+    {
+        alert("invlid password, the password should be min 6 character it can have alphabets ,numbers,@ symbol ");
+        return;
+    }
     if (userdetails && userdetails.name === username && userdetails.password === password) {
-        // SAVES THE SESSION TRACKER: Remembers who is currently logged in
         localStorage.setItem("loggedInUser", username);
         window.location.href = "dashboard.html";
     } else {
         window.alert("invalid credentials");
+
     }
+    
 }
 
-// Helper function to dynamically find the current user's unique storage key
+
 function getUserStudentsKey() {
     const currentUser = localStorage.getItem("loggedInUser");
     if (!currentUser) {
@@ -48,14 +79,10 @@ function getUserStudentsKey() {
         window.location.href = "login.html";
         return null;
     }
-    // Generates a unique isolated key like "alex_studentsList"
     return currentUser + "_studentsList";
 }
 
 
-// ==========================================
-// 2. STUDENT MANAGEMENT (ADD, VIEW, DELETE)
-// ==========================================
 
 function addstudent(event) {
     event.preventDefault();
@@ -63,14 +90,12 @@ function addstudent(event) {
     const storageKey = getUserStudentsKey();
     if (!storageKey) return;
 
-    // FIXED: Form input elements now capture the clean dataset without ID
     const name = document.getElementById("name").value;
     const rollnumber = document.getElementById("rollnumber").value;
     const email = document.getElementById("email").value;
     const branch = document.getElementById("branch").value;
     const cgpa = document.getElementById("cgpa").value;
 
-    // FIXED: ID has been completely purged from the core object model map
     const student = {
         name: name,
         rollnumber: rollnumber,
@@ -79,7 +104,6 @@ function addstudent(event) {
         cgpa: cgpa
     };
 
-    // Fetches ONLY the array belonging to this logged-in account
     let studentsList = JSON.parse(localStorage.getItem(storageKey)) || [];
 
     const isDuplicate = studentsList.some(s => s.rollnumber === rollnumber);
@@ -94,7 +118,6 @@ function addstudent(event) {
     window.location.href = "viewStudent.html";
 }
 
-// DISPLAY VIEW STUDENTS LOOP
 const tbody = document.getElementById("viewstudents");
 
 if (tbody) {
@@ -109,7 +132,6 @@ if (tbody) {
         } else {
             studentsList.forEach(student => {
                 const row = document.createElement("tr");
-                // FIXED: Removed the ID column field element cell entirely
                 row.innerHTML = `
                     <td>${student.rollnumber}</td>
                     <td>${student.name}</td>
@@ -141,9 +163,6 @@ function deletestudent(rollnumber) {
 }
 
 
-// ==========================================
-// 3. CLEAN EDIT & UPDATE ACTIONS
-// ==========================================
 
 function routeToEdit(rollnumber) {
     localStorage.setItem("currentEditRoll", rollnumber);
@@ -186,7 +205,6 @@ function updateStudent(event) {
     const studentIndex = studentsList.findIndex(s => s.rollnumber === targetRoll);
 
     if (studentIndex !== -1) {
-        // FIXED: The record modification map contains zero references to an ID property
         studentsList[studentIndex] = {
             name: document.getElementById("name").value,
             rollnumber: targetRoll,
@@ -206,16 +224,10 @@ function updateStudent(event) {
 }
 
 
-// ==========================================
-// 4. LOGOUT HANDLING LOGIC
-// ==========================================
 function handleLogout() {
-    // 1. Remove the active user tracking token
     localStorage.removeItem("loggedInUser");
 
-    // 2. Optional: Remove any leftover edit pointers to keep storage clean
     localStorage.removeItem("currentEditRoll");
     
-    // The user's specific student data (e.g. "username_studentsList") 
-    // remains completely safe and untouched in localStorage.
+
 }
