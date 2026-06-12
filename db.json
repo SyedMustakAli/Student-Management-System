@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "username": "ali",
+      "email": "mustakalijnv1234@gmail.com",
+      "password": "1234",
+      "id": "bkh4wgsLctI"
+    },
+    {
+      "username": "soo1",
+      "email": "s001@gmail.com",
+      "password": "1234",
+      "id": "hBFNwgFDWYw"
+    }
+  ],
+  "students": [
+    {
+      "name": "arjun",
+      "rollnumber": "1",
+      "email": "arjun@gmail.com",
+      "branch": "cse",
+      "cgpa": "9.0",
+      "id": "oH7AF0U8R7A"
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
