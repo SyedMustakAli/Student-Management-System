@@ -377,7 +377,11 @@ function editstudent(id) {
     window.location.href = `editStudent.html?id=${id}`;
 }
 async function loadpage() {
+     console.log("loadpage called");
+
+
     const id = new URLSearchParams(window.location.search).get("id");
+        console.log("ID:", id);
     if (!id) {
         alert("No student ID found in the URL.");
         return;
